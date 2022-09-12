@@ -4,12 +4,20 @@
 # чтобы не нарушить традицию, если заранее известен рост каждого ученика 
 # и эти данные уже расположены по невозрастанию (то есть каждое следующее число не больше предыдущего). 
 # Если в классе есть несколько учеников с таким же ростом, как у Пети, то программа должна расположить его после них.
+import random
 
-a = [int(s) for s in input().split()]
-x = int(input())
-score = len(a) + 1
-for i in range(len(a)):
-    if x > a[i]:
-        score = i + 1
-        break
-print(score)
+students = int(input("Сколько учеников в классе: "))
+list = [random.randint(50, 200) for i in range(students)]
+height_Petya = int(input("Какой рост у Пети: "))
+list.append(height_Petya)
+list.sort(reverse=True)
+print(*list)
+i = 0
+flag = True
+while flag:
+    while i < len(list):
+        if list[i] == height_Petya:
+            print(i+1)
+            flag = False
+        i += 1
+        
