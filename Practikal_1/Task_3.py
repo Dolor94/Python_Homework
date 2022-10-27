@@ -1,26 +1,44 @@
 import os
 
+
+# задача 3. Напишите программу, которая принимает на вход координаты точки (X и Y), 
+# и выдаёт номер четверти плоскости, в которой находится эта точка 
+# (или на какой оси она находится).
+# Пример:
+# - x=34; y=-30 -> 4
+# - x=2; y=4-> 1
+# - x=-34; y=-30 -> 3
+
 def clear(): return os.system("cls")
-
-# Напишите программу для. проверки истинности утверждения ¬(X ⋁ Y ⋁ Z) = ¬X ⋀ ¬Y ⋀ ¬Z для всех значений предикат.
-
 clear()
-def inputNumbers(x):
-    xyz = ["X", "Y", "Z"]
-    a = []
-    for i in range(x):
-        a.append(input(f"Введите значение {xyz[i]}: "))
-    return a
+x = int(input("Введите координаты точки Х: "))
+y = int(input("Введите координаты точки Y: "))
 
-def checkPredicate(x):
-    left = not (x[0] or x[1] or x[2])
-    right = not x[0] and not x[1] and not x[2]
-    result = left == right
-    return result
-
-statement = inputNumbers(3)
-
-if checkPredicate(statement):
-    print(f"Утверждение истинно")
-else:
-    print(f"Утверждение ложно")
+if x >= 0 and y >= 0:
+    if x > 0 and y > 0:
+        print("Точки координат X и Y находятся в четверти: 1")
+    elif x == 0 and y > 0:
+        print("Точки координат X и Y находятся на оси Y")
+    elif x > 0 and y == 0:
+        print("Точки координат X и Y находятся на оси Х")
+elif x <= 0 and y >= 0:
+    if x < 0 and y > 0:
+        print("Точки координат X и Y находятся в четверти: 2")
+    elif x == 0 and y > 0:
+        print("Точки координат X и Y находятся на оси Y")
+    elif x < 0 and y == 0:
+        print("Точки координат X и Y находятся на оси Х")
+elif x <= 0 and y <= 0:
+    if x < 0 and y < 0:
+        print("Точки координат X и Y находятся в четверти: 3")
+    elif x == 0 and y < 0:
+        print("Точки координат X и Y находятся на оси Y")
+    elif x < 0 and y == 0:
+        print("Точки координат X и Y находятся на оси Х")
+elif x >= 0 and y <= 0:
+    if x > 0 and y < 0:
+        print("Точки координат X и Y находятся в четверти: 4")
+    elif x == 0 and y < 0:
+        print("Точки координат X и Y находятся на оси Y")
+    elif x > 0 and y == 0:
+        print("Точки координат X и Y находятся на оси Х")

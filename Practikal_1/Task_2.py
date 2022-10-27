@@ -1,17 +1,29 @@
-import math
 import os
 
+
+# задача 2. Напишите программу для. 
+# проверки истинности утверждения ¬(X ⋁ Y ⋁ Z) = ¬X ⋀ ¬Y ⋀ ¬Z для всех значений предикат.
+
 def clear(): return os.system("cls")
-
-# Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 2D пространстве.
-
 clear()
-print("Введите координаты точки 'А' в 2D пространстве:")
-x1 = float(input("x1: "))
-y1 = float(input("y1: "))
-print("Введите координаты точки 'Б' в 2D пространстве:")
-x2 = float(input("x2: "))
-y2 = float(input("y2: "))
-clear()
-length = round(math.sqrt(math.pow(x2 - x1, 2) + math.pow(y2 - y1, 2)), 2)
-print(f"Расстояние между точками 'А' и 'Б' равняется: {length}")
+print("Проверка истинности утверждения: ¬(X ⋁ Y ⋁ Z) = ¬X ⋀ ¬Y ⋀ ¬Z")
+
+def user_XYZ(x):
+    user_numbers = ["X", "Y", "Z"]
+    arr = []
+    for i in range(x):
+        arr.append(int(input(f"Введите значение {user_numbers[i]}: ")))
+    return arr
+
+def checking(x):
+    left = not(x[0] or x[1] or x[2])
+    right = not x[0] and not x[1] and x[2]
+    result = left == right
+    return result
+
+answer = user_XYZ(3)
+
+if checking(answer):
+    print(f"¬(X ⋁ Y ⋁ Z) = ¬X ⋀ ¬Y ⋀ ¬Z: Утверждение истинно")
+else:
+    print(f"¬(X ⋁ Y ⋁ Z) = ¬X ⋀ ¬Y ⋀ ¬Z: Утверждение ложно")
