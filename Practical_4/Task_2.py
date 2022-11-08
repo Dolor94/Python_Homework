@@ -1,14 +1,11 @@
-# Задайте натуральное число N. Напишите программу, которая составит список простых множителей числа N.
+import os
 
-number = int(input("Введите число: "))
-i = 2 
-arr = []
-user_number = number
-while i <= number:
-    if number % i == 0:
-        arr.append(i)
-        number //= i
-        i = 2
-    else:
-        i += 1
-print(f"Простые множители числа {user_number} приведены в списке: {arr}")
+# задача 2 . Задайте последовательность чисел. Напишите программу, которая выведет список неповторяющихся элементов исходной последовательности.
+
+def clear(): return os.system("cls")
+clear()
+first_arr = list(map(int, input("Введите числа через пробел: ").split()))
+print(f"Исходный список: {first_arr}")
+new_arr = []
+[new_arr.append(i) for i in first_arr if i not in new_arr]
+print(f"Список из неповторяющихся элементов: {new_arr}")

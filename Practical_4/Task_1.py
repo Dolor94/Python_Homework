@@ -1,14 +1,19 @@
-# Пользователь вводит число, Вам необходимо вывести число Пи с той точностью знаков после запятой, 
-# сколько указал пользователь(БЕЗ ИСПОЛЬЗОВАНИЯ МОДУЛЕЙ/БИБЛИОТЕК)
+import os
 
-n = int(input("Точность = "))
-k = 1
-pi = 0
-for i in range (10000000):
-    if i % 2 == 0 :
-        pi += 4 / k
-    else :
-        pi -= 4 / k
-    k += 2
-pi = str(pi)
-print (pi[0] if n == 0 else pi[:n+2])
+
+# задача 1. Задайте натуральное число N. Напишите программу, которая составит список простых множителей числа N.
+
+def clear(): return os.system("cls")
+clear()
+number = int(input("Введите число: "))
+i = 2 
+arr = []
+user_number = number
+while i <= number:
+    if number % i == 0:
+        arr.append(i)
+        number //= i
+        i = 2
+    else:
+        i += 1
+print(f"Простые множители числа {user_number} приведены в списке: {arr}")
