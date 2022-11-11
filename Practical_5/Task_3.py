@@ -1,29 +1,22 @@
-# Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных.
+import os
 
-def coding(txt):
-    count = 1
-    res = ''
-    for i in range(len(txt)-1):
-        if txt[i] == txt[i+1]:
-            count += 1
-        else:
-            res = res + str(count) + txt[i]
-            count = 1
-    if count > 1 or (txt[len(txt)-2] != txt[-1]):
-        res = res + str(count) + txt[-1]
-    return res
 
-def decoding(txt):
-    number = ''
-    res = ''
-    for i in range(len(txt)):
-        if not txt[i].isalpha():
-            number += txt[i]
-        else:
-            res = res + txt[i] * int(number)
-            number = ''
-    return res
+# задача 3. Напишите программу, удаляющую из текста все слова, содержащие "абв". Функции FIND и COUNT юзать нельзя.
 
-s = input("Введите текст для кодировки: ")
-print(f"Текст после кодировки: {coding(s)}")
-print(f"Текст после дешифровки: {decoding(coding(s))}")
+def clear(): return os.system("cls")
+clear()
+
+def del_txt(x):
+    return False if 'абв' in x else True
+    # for i in range(len(x)-2):
+    #     if (x[i]+x[i+1]+x[i+2]) == 'абв':
+    #         k = False
+    # return k
+
+user_txt = input('Введите текст: ')
+user_txt = user_txt.split()
+print("вводные данные")
+print(*user_txt)
+user_txt = list(filter(del_txt, user_txt))
+print("выходные данные")
+print(*user_txt)
