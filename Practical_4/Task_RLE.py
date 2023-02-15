@@ -1,8 +1,7 @@
 import os
 
 
-# задача 2. Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных (здесь только буквы).
-# Входные и выходные данные хранятся в отдельных текстовых файлах.
+# Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных (где только буквы присутствуют для простоты).
 
 def clear(): return os.system("cls")
 clear()
@@ -18,7 +17,6 @@ def coding(txt):
     if count > 1 or (txt[len(txt)-2] != txt[-1]):
         res = res + str(count) + txt[-1]
     return res
-
 def decoding(txt):
     number = ''
     res = ''
@@ -29,7 +27,6 @@ def decoding(txt):
             res = res + txt[i] * int(number)
             number = ''
     return res
-
 s = input("Введите текст для кодировки: ")
 print(f"Текст после кодировки: {coding(s)}")
 print(f"Текст после дешифровки: {decoding(coding(s))}")
